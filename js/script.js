@@ -131,3 +131,4 @@ var wow = new WOW(
 	}
   );
   wow.init();
+/new line
