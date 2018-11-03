@@ -4,11 +4,24 @@
 ########################################
 ######################################*/
 
-$primary-color:#1871A5;
+$primary-color:#64706C;
 $primary-color-hover:#145D88;
+
+$color-1:#EDE9CE;
+$color-2:#C7AD88;
+$color-3:#64706C;
+$color-4:#935347;
+$dark:#710B28;
+
+/*######################################
+########################################    
+<---------------Global------------------>
+########################################
+######################################*/
 
 body {
     font-family: 'Roboto', sans-serif;
+    color: $dark;
 }
 
 button:focus {
@@ -18,6 +31,31 @@ button:focus {
 a {
     text-decoration: none !important;
 }
+/*######################################
+########################################    
+<---------------Scrollbar------------------>
+########################################
+######################################*/
+
+/* width */
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: white; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: $dark; 
+}
 
 /*######################################
 ########################################    
@@ -25,48 +63,107 @@ a {
 ########################################
 ######################################*/
 
+
+
 .navbar {
-    padding: 0 12px 0 12px !important;
+    padding: 0 20px 0 20px !important;
     text-transform: uppercase;
     font-weight: 900;
-    font-size: 14px;
+    font-size: 15px;
     position: relative;
     margin: 25px 100px;
-    background: $primary-color !important;
+    background: transparent !important;
+    transition: all 0.5s;
 
-    .navbar-toggler {
-        border-color: transparent !important;
-    }
+    @media (max-width: 985px) {
+        & {
+            margin: 0;
+            height: auto;
+            font-size: 14px;
 
-    &:after {
-        position: absolute;
-        left: 0;
-        top: 60px;
-        content: '';
-        border-style: solid;
-        border-width: 18px 0 0 32px;
-        border-color: #5797BD #5797BD transparent transparent;
-        box-shadow: inset -7px 0 9px -7px rgba(0, 0, 0, .4);
-    }
-
-    &:before {
-        position: absolute;
-        right: 0;
-        top: 60px;
-        content: '';
-        border-style: solid;
-        border-width: 18px 32px 0 0;
-        border-color: #5797BD transparent transparent #5797BD;
-        box-shadow: inset -7px 0 9px -7px rgba(0, 0, 0, .4);
-    }
-
-    @media (max-width: 768px) {
-
-        &:after,
-        &:before {
-            display: none;
         }
 
+        ul.navbar-nav {
+            background: $color-4 !important;
+            opacity: 0.90;
+        }
+    }
+
+    &.full-width-nav {
+        font-size: 14px;
+        background: $color-4 !important;
+        margin: 0 !important;
+        // padding: 0 100px !important;
+        transition: all 0.5s;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+        opacity: 0.90;
+    }
+
+    &.noPseudo:after,
+    &.noPseudo:before {
+        opacity: 0;
+    }
+
+    .navbar-toggler {
+        border-color: transparent;
+        position: relative;
+        width: 30px;
+        height: 25px;
+
+        &.open {
+            span {
+                &:nth-child(1) {
+                    top: 12px;
+                    -webkit-transform: rotate(135deg);
+                    -moz-transform: rotate(135deg);
+                    -o-transform: rotate(135deg);
+                    transform: rotate(135deg);
+                }
+
+                &:nth-child(2) {
+                    opacity: 0;
+                    left: -60px;
+                }
+
+                &:nth-child(3) {
+                    top: 12px;
+                    -webkit-transform: rotate(-135deg);
+                    -moz-transform: rotate(-135deg);
+                    -o-transform: rotate(-135deg);
+                    transform: rotate(-135deg);
+                }
+            }
+        }
+
+        span {
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            background: $color-1;
+            opacity: 1;
+            left: 0;
+            -webkit-transition: .20s ease-in-out;
+            -moz-transition: .20s ease-in-out;
+            -o-transition: .20s ease-in-out;
+            transition: .20s ease-in-out;
+
+            &:nth-child(1) {
+                top: 2px;
+            }
+
+            &:nth-child(2) {
+                top: 10px;
+            }
+
+            &:nth-child(3) {
+                top: 18px;
+            }
+        }
+    }
+
+    li.nav-item {
+        padding-left: 18px;
     }
 
     a.nav-link {
@@ -75,15 +172,6 @@ a {
 
 
 }
-
-
-@media (max-width: 768px) {
-    .navbar {
-        margin: 0;
-        height: auto;
-    }
-}
-
 
 /*######################################
 ########################################    
@@ -96,27 +184,22 @@ a {
 
     .owl-nav {
         position: absolute;
-        // width: 53px;
-        // height: 53px;
-        // background: rgba(255, 255, 255, 0.14);
-        display: block;
-        text-align: center;
         font-size: 40px;
-        line-height: 16px;
         color: #FFFFFF;
-        top: 50%;
-        padding: 18px 0;
-        -webkit-transform: translateY(-50%);
         transform: translateY(-50%);
-
-        button.owl-prev {
-            left: 0;
-        }
-
-        button.owl-next {
-            right: 0;
-        }
+        top: 50%;
     }
+
+    .owl-nav .owl-next {
+        position: absolute;
+        right: 0;
+    }
+
+    .owl-nav .owl-prev {
+        position: relative;
+        left: 0;
+    }
+
 
     .banner-slider-item {
         position: relative;
@@ -132,7 +215,7 @@ a {
             width: 100%;
             height: 100%;
             content: '';
-            background: rgba(0, 0, 0, 0.50);
+            background: rgba(103, 13, 42, 0.8);
         }
 
         .banner-content {
@@ -186,7 +269,6 @@ a {
     }
 }
 
-.banner-slider
 /*######################################
 ########################################    
 <---------------Button------------------>
@@ -198,11 +280,11 @@ a {
     font-weight: 600;
     font-family: "Poppins", sans-serif;
     color: #FFFFFF;
-    background: $primary-color;
+    background: $color-4;
     display: inline-block;
     line-height: 54px;
     padding: 0 40px;
-    border: 1px solid $primary-color;
+    border: 1px solid $color-4;
     border-radius: 2px;
     transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -215,8 +297,8 @@ a {
     &:focus {
         color: #FFFFFF;
         outline: none;
-        background: $primary-color-hover;
-        border-color: $primary-color-hover;
+        background: $color-3;
+        border-color: $color-3;
     }
 
     &.fill {
@@ -225,8 +307,8 @@ a {
         margin-left: 18px;
 
         &:hover {
-            background: $primary-color-hover;
-            border-color: $primary-color-hover;
+            background: $color-3;
+            border-color: $color-3;
         }
     }
 }
@@ -240,27 +322,26 @@ a {
 .Quick-navigation {
     z-index: 999;
     position: fixed;
-    margin: 10px;
+    margin: 12px;
     top: 50%;
     right: 0;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.4);
+    // background: rgba(0, 0, 0, 0.4);
     padding: 5px;
-    border-radius: 20px;
+    // border-radius: 20px;
 
 }
 
 .Quick-navigation-item {
     text-decoration: none;
     transition: all 0.5s;
-    margin: 5px 0 5px 0;
-    padding: 4px;
+    margin: 30px 0 30px 0;
     display: block;
-    border: 2px solid white;
+    border: 2px solid black;
     border-radius: 30px;
-    height: 15px;
-    width: 15px;
+    height: 12px;
+    width: 12px;
 
     &:hover {
         background: black;
@@ -268,13 +349,16 @@ a {
     }
 
     &.change {
-        background: $primary-color;
-        height: 30px;
-        width: 15px;
-        border-color: $primary-color;
+        background: black;
+        height: 12px;
+        width: 12px;
+        border-color: black;
     }
 }
 
+.section-heading{
+    color:$dark;
+}
 /*######################################
 ########################################    
 <---------------Our services------------------>
@@ -286,19 +370,23 @@ a {
 #row1 {
     .row {
         .col-card {
-            padding: 20px;
+            color: #710B28;
+            padding: 0 15px;
 
             .card {
                 background: #EAF2F6;
 
+                .circle i {
+                    color: whitesmoke !important;
+                }
+
                 &:hover {
                     box-sizing: border-box;
-                    box-shadow: 0 8px 7px -5px #333;
+                    box-shadow: 0 4px 7px -5px #333;
 
                     .circle i {
                         -webkit-transform: rotate(360deg);
                         transform: rotate(360deg);
-                        color: whitesmoke;
                     }
 
                     a {
@@ -306,72 +394,39 @@ a {
                     }
                 }
 
-                .fold {
+                .card-img-top {
                     position: relative;
-
-                    .card-img-top {
-                        transition: all 0.6s;
-                        transform: scale(1.1);
-                        box-shadow: 0 5px 20px -3px #333;
-                    }
+                    height: 200px;
+                    background-position: center;
+                    background-size: cover;
 
                     &:after {
                         position: absolute;
-                        bottom: -29px;
-                        content: '';
-                        right: -12px;
-                        border-style: solid;
-                        border-width: 20px 12px 0 0;
-                        border-color: black transparent transparent black;
-                        box-shadow: inset -7px 0 9px -7px rgba(0, 0, 0, 0.4);
-                    }
-
-                    &:before {
-                        position: absolute;
-                        bottom: -29px;
-                        content: '';
-                        left: -12px;
-                        border-style: solid;
-                        border-width: 20px 0 0 12px;
-                        border-color: black black transparent transparent;
-                        z-index: 999;
-                    }
-
-                    @media (max-width: 768px) {
-                        &:after {
-                            bottom: -32px;
-                            right: -16px;
-                            border-width: 20px 16px 0 0;
-
-                        }
-
-                        &:before {
-                            bottom: -32px;
-                            left: -16px;
-                            border-width: 20px 0 0 16px;
-                        }
+                        left: 0;
+                        top: 0;
+                        width: inherit;
+                        height: inherit;
+                        background: red;
                     }
                 }
 
-
                 .card-body {
                     .card-link {
-                        color: black;
+                        color: $dark;
                         font-weight: 500;
                     }
                 }
 
                 .circle {
                     position: relative;
-                    margin: -40px auto 0 auto;
-                    background: $primary-color;
+                    margin: -30px auto 0 auto;
+                    background: $color-4;
                     text-align: center;
-                    float: left;
-                    width: 80px;
-                    height: 80px;
-                    border: 1px solid $primary-color;
+                    width: 60px;
+                    height: 60px;
+                    border: 1px solid $color-4;
                     border-radius: 100%;
-                    padding: 25px 20px;
+                    padding: 14px 7px;
 
                     i {
                         transition: all 0.5s ease;
@@ -384,7 +439,6 @@ a {
             }
         }
     }
-
 }
 
 
@@ -394,7 +448,7 @@ a {
 ########################################
 ######################################*/
 
-.container-fluid {
+.connect .container-fluid {
     background: #EAF2F6;
 }
 
@@ -448,11 +502,12 @@ section#row2 {
     }
 
     .card {
-        background-color: $primary-color;
+        background-color: $color-4;
         padding: 40px 150px;
         color: white;
         border-radius: 0;
         border: none;
+        opacity: 0.8;
     }
 }
 
@@ -534,8 +589,6 @@ section#row2 {
         margin: 20px;
     }
 
-
-
     .spinner {
         animation: spinner .7s infinite linear;
         border: 3px solid rgba(0, 0, 0, 0.2);
@@ -559,4 +612,69 @@ section#row2 {
             transform: rotateZ(360deg);
         }
     }
+}
+
+/*######################################
+########################################    
+<---------------Footer------------------>
+########################################
+######################################*/
+
+footer {
+    .social-media {
+        i {
+            display: inline-block;
+            overflow: hidden;
+            text-align: center;
+            border: solid 5px $primary-color;
+            -webkit-transition: all 0.4s;
+            -moz-transition: all 0.4s;
+            transition: all 0.4s;
+            margin: 0 5px 0 5px;
+            padding: 13px;
+            background: white;
+            color: $primary-color;
+            width: 50px;
+            height: 50px;
+            border-radius: 45px;
+            -webkit-transition: all 0.6s;
+            -moz-transition: all 0.6s;
+            transition: all 0.6s;
+
+            &:hover {
+                border: solid 5px #004d40;
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg) scale(1.2);
+                -webkit-transition: all 0.5s;
+                -moz-transition: all 0.5s;
+                transition: all 0.5s;
+                color: #004d40;
+            }
+        }
+    }
+
+    .container-fluid {
+        background: $primary-color;
+        color: white;
+    }
+}
+
+/*######################################
+########################################    
+<---------------Scale Out Transition------------------>
+########################################
+######################################*/
+
+.tight {
+    transform: scale(0.987);
+    cursor: pointer;
+}
+
+.body-change {
+    background: $color-3;
+}
+
+.wrapper {
+    transition: all 0.3s ease 0s;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.4);
 }
