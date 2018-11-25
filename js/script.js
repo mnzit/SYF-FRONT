@@ -10,10 +10,8 @@ $(window).scroll(function (event) {
 
 	if (scrolled > 650) {
 		$('.navbar').addClass('full-width-nav');
-		$('.navbar').addClass('noPseudo');
 	} else {
 		$('.navbar').removeClass('full-width-nav');
-		$('.navbar').removeClass('noPseudo');
 	}
 
 	$(".row-nav").each(function () {
@@ -61,7 +59,8 @@ $("#owl-demo").owlCarousel({
 	dotsContainer: ".dots",
 	responsive: {
 		0: {
-			items: 1
+			items: 1,
+			nav:true
 		},
 		768: {
 			items: 1
@@ -94,7 +93,7 @@ $(".banner-slider").owlCarousel({
 	responsive: {
 		// breakpoint from 0 up
 		0: {
-			nav: false,
+			nav: true,
 		},
 		// breakpoint from 480 up
 		480: {
@@ -166,6 +165,7 @@ $(window).on('scroll', function () {
 		// $('body').removeClass('body-change');
 	}
 });
+$(document).load()
 
 (function (d, s, id) {
 	var js, fjs = d.getElementsByTagName(s)[0];

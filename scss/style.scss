@@ -31,6 +31,7 @@ button:focus {
 a {
     text-decoration: none !important;
 }
+
 /*######################################
 ########################################    
 <---------------Scrollbar------------------>
@@ -44,17 +45,17 @@ a {
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: white; 
+    background: white;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #888; 
+    background: #888;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: $dark; 
+    background: $dark;
 }
 
 /*######################################
@@ -179,27 +180,54 @@ a {
 ########################################
 ######################################*/
 
+
+
 .xs-banner-sec {
-    position: relative;
 
     .owl-nav {
-        position: absolute;
-        font-size: 40px;
-        color: #FFFFFF;
-        transform: translateY(-50%);
-        top: 50%;
-    }
+        &>button {
+            top: 50%;
+            position: absolute !important;
+            transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.09) !important;
+            display: block;
+            text-align: center;
+            line-height: 16px;
+            border-radius: 45px;
+            transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -webkit-transition: all 0.5s ease;
+            -ms-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
 
-    .owl-nav .owl-next {
-        position: absolute;
-        right: 0;
-    }
+            &:hover {
+                background: rgba(255, 255, 255, 0.2) !important;
+                transition: all 0.5s ease;
+                -moz-transition: all 0.5s ease;
+                -webkit-transition: all 0.5s ease;
+                -ms-transition: all 0.5s ease;
+                -o-transition: all 0.5s ease;
+            }
 
-    .owl-nav .owl-prev {
-        position: relative;
-        left: 0;
-    }
+            &>i {
+                font-size: 35px;
+                color: white !important;
+            }
+        }
 
+        &>.owl-prev {
+            left: 3%;
+            right: auto;
+        }
+
+        &>.owl-next {
+            right: 3%;
+            left: auto;
+        }
+    }
 
     .banner-slider-item {
         position: relative;
@@ -356,9 +384,10 @@ a {
     }
 }
 
-.section-heading{
-    color:$dark;
+.section-heading {
+    color: $dark;
 }
+
 /*######################################
 ########################################    
 <---------------Our services------------------>
@@ -401,12 +430,13 @@ a {
                     background-size: cover;
 
                     &:after {
+                        content: '';
                         position: absolute;
                         left: 0;
                         top: 0;
                         width: inherit;
                         height: inherit;
-                        background: red;
+                        background: rgba(103, 13, 42, 0.43);
                     }
                 }
 
@@ -521,7 +551,7 @@ section#row2 {
 
 @media (max-width: 768px) {
     section#row2 .card {
-        padding: 40px 30px;
+        padding: 20px 20px;
     }
 }
 
@@ -678,3 +708,5 @@ footer {
     transition: all 0.3s ease 0s;
     box-shadow: 0 8px 10px rgba(0, 0, 0, 0.4);
 }
+
+
